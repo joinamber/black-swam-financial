@@ -37,4 +37,7 @@ black_swan_watch_*.md
 __pycache__/
 *.pyc
 *.pyo
+
+# Credentials — never commit
 .env
+*.env
