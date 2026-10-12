@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.amber.bswan-fetcher</string>
+
+    <!-- Invoke via /bin/bash explicitly so the wrapper does NOT need its
+         execute bit set. The +x is fragile — it resets whenever the file is
+         re-saved or re-synced — so calling bash on it is the durable fix. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/aliang/Finance/Stock/bswan/run_fetcher.sh</string>
+    </array>
+
+    <!-- 19:25 local time, Monday(1) through Friday(5) — matches the
+         Mon-Fri 19:37 Cowork briefing (cron 37 19 * * 1-5). Runs ~12 min
+         before the briefing. If the Mac is asleep at 19:25, launchd runs
+         the job as soon as it next wakes. -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>25</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/aliang/Finance/Stock/bswan/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/aliang/Finance/Stock/bswan/launchd.err.log</string>
+
+    <!-- Do not run the instant it's loaded; wait for the scheduled time. -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

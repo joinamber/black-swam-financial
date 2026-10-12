@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.amber.bswan-watcher</string>
+
+    <!-- Call bash explicitly so the +x bit on run_watcher.sh is not required. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/aliang/Finance/Stock/bswan/run_watcher.sh</string>
+    </array>
+
+    <!-- Saturday (Weekday=6) at 09:30 SGT.
+         If the Mac is asleep at 09:30, launchd runs the job at next wake.
+         The daily fetcher runs Mon-Fri at 19:25, so Friday's data is ready
+         by Saturday morning. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key><integer>6</integer>
+        <key>Hour</key><integer>9</integer>
+        <key>Minute</key><integer>30</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/aliang/Finance/Stock/bswan/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/aliang/Finance/Stock/bswan/launchd.err.log</string>
+
+    <!-- Do not run immediately on load; wait for Saturday 09:30. -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

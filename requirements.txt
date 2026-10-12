@@ -1,0 +1,16 @@
+# Direct dependencies for bswan_fetcher_v3.py.
+# These are the top-level packages; after installing, freeze the FULL
+# resolved tree (incl. transitive deps) to requirements.lock and install
+# from the lock on any rebuild so versions never drift silently:
+#
+#   python3 -m venv .venv
+#   ./.venv/bin/pip install --upgrade pip
+#   ./.venv/bin/pip install -r requirements.txt
+#   ./.venv/bin/pip freeze > requirements.lock   # <-- pin exactly what ran
+#
+# Thereafter, rebuild reproducibly with:
+#   ./.venv/bin/pip install --no-deps -r requirements.lock
+#
+# Only bump a version deliberately, after a glance at the release notes.
+requests
+yfinance

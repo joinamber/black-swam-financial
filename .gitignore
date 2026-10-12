@@ -1,0 +1,40 @@
+# Generated outputs
+black_swan_dashboard_*.html
+watch_*.json
+watch_*.md
+watcher_status.json
+daily_briefing_prompt_v3.4.md.pre_*.bak
+
+# Live data (auto-generated, contains portfolio values)
+daily_readings.json
+daily_readings.json.*
+daily_readings*.json
+daily_readings.v2.backup.json
+holdings_prices.json
+holdings_prices.json.*
+
+# Logs
+*.log
+launchd.out.log
+launchd.err.log
+
+# Backups
+*.bak
+*.pre_*.bak
+
+# Analysis documents
+essay_*.md
+graham_*.md
+iv18_*.md
+CNOOC_*.md
+OXY_*.md
+Weekly_Briefing_*.md
+weekly_briefing_*.md
+briefing_*.md
+black_swan_watch_*.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
